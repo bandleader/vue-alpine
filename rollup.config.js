@@ -12,12 +12,16 @@ export default {
       file: pkg.module,
       format: 'es',
     },
+    {
+      file: 'dist/for-script-tag.min.js',
+      format: 'iife',
+      plugins: [terser()]
+    }
   ],
   external: [
     ...Object.keys(pkg.dependencies || {}),
     ...Object.keys(pkg.peerDependencies || {}),
   ],
 plugins: [
-    terser()
   ],
 }

@@ -118,5 +118,9 @@ function onDocumentReady(fn) {
 }   
 
 function vueAlpineInit() { onDocumentReady(init); }
+if (
+  typeof module !== 'undefined' &&
+  typeof module.exports !== 'undefined'
+) vueAlpineInit();
 
 export default vueAlpineInit;

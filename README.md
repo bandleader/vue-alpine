@@ -18,6 +18,9 @@
 <script src="https://cdn.jsdelivr.net/gh/bandleader/vue-alpine@v0.x.x/dist/for-script-tag.min.js">
 ```
 
+Or you can import the [ES module](https://cdn.jsdelivr.net/gh/bandleader/vue-alpine@v0.x.x/dist/index.es.js).
+It default-exports a function which you need to call.
+
 # More complex example
 ```html
 <div x-data="{ who: 'world' }">
@@ -58,6 +61,7 @@ Re-usable Vue components:
 <template x-component="fancy-button" x-props="['bgcolor']">
     <button type="button" style="{background: bgcolor}"><slot /></button>
 </template>
+
 <div x-data>
     <fancy-button bgcolor="lightgreen">Green fancy button</fancy-button>
     <fancy-button :bgcolor="'yellow'">Yellow fancy button</fancy-button>

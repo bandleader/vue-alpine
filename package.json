@@ -1,6 +1,6 @@
 {
   "name": "vue-alpine",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Vue instances without any script, à la alpine.js",
   "main": "dist/index.js",
   "module": "dist/index.es.js",

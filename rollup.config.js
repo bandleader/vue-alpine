@@ -3,6 +3,7 @@ import { terser } from "rollup-plugin-terser";
 
 export default {
   input: 'src/index.js',
+  useStrict: false, // since we're using `with` blocks
   output: [
     {
       file: pkg.main,

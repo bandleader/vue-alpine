@@ -6,7 +6,7 @@
 
 
 function init() {
-    console.log("vue-alpine 0.1.0 initializing...");
+    console.log("vue-alpine 0.1.2 initializing...");
 
     const findWithTag = (tag,fn) => Array.from(document.querySelectorAll(`*[${tag}]`)).forEach(fn);
 
@@ -119,10 +119,10 @@ function onDocumentReady(fn) {
 	}
 }   
 
-function vueAlpineInit() { onDocumentReady(init); }
-if (
-  typeof module !== 'undefined' &&
-  typeof module.exports !== 'undefined'
-) vueAlpineInit();
+// Export a function for module-importers to call if they like
+function vueAlpineInitOnReady() { onDocumentReady(init); }
 
-module.exports = vueAlpineInit;
+// In non-module environements (i.e. HTML page with a script tag), call our function now
+if (typeof module == 'undefined') vueAlpineInitOnReady();
+
+module.exports = vueAlpineInitOnReady;

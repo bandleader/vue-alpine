@@ -4,7 +4,7 @@
 
 
 function init() {
-    console.log("vue-alpine 0.1.2 initializing...")
+    console.log("vue-alpine 0.1.3 initializing...")
 
     const findWithTag = (tag,fn) => Array.from(document.querySelectorAll(`*[${tag}]`)).forEach(fn)
 

@@ -14,12 +14,13 @@
 <div x-data="{ who: 'world' }">
   <div>Hello {{who}} from vue-alpine!</div>
 </div>
-<script src="https://unpkg.com/vue@2.x.x/dist/vue.js">
-<script src="https://cdn.jsdelivr.net/gh/bandleader/vue-alpine@v0.x.x/dist/for-script-tag.min.js">
+<script src="https://unpkg.com/vue@2.x.x/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/bandleader/vue-alpine@v0.x.x/dist/for-script-tag.min.js"></script>
 ```
 
 Or you can import the [ES module](https://cdn.jsdelivr.net/gh/bandleader/vue-alpine@v0.x.x/dist/index.es.js).
-It default-exports a function which you need to call.
+It default-exports a function which you need to call to initialize the instances on your page.
+The script-tag version of the library does this automatically, just like alpine.js.
 
 # More complex example
 ```html
@@ -35,9 +36,9 @@ It default-exports a function which you need to call.
 ### `x-computed`
 ```html
 <div 
-    x-data="{ who: 'world' }"
-    x-computed:greeting="'Hello, ' + who + '!'"
-    >
+  x-data="{ who: 'world' }"
+  x-computed:greeting="'Hello, ' + who + '!'"
+  >
   {{greeting}}
 </div>
 ```
@@ -46,11 +47,11 @@ You can have multiple `x-computed`s on a single element.
 You can also pass a function:
 ```html
 <div 
-    x-data="{ who: 'world' }"
-    x-computed:greeting="() => {
-        return 'Hello, ' + who + '!'
-    }"
-    >
+  x-data="{ who: 'world' }"
+  x-computed:greeting="() => {
+    return 'Hello, ' + who + '!'
+  }"
+  >
   {{greeting}}
 </div>
 ```
@@ -59,12 +60,12 @@ You can also pass a function:
 Re-usable Vue components:
 ```html
 <template x-component="fancy-button" x-props="['bgcolor']">
-    <button type="button" style="{background: bgcolor}"><slot /></button>
+  <button type="button" style="{background: bgcolor}"><slot /></button>
 </template>
 
 <div x-data>
-    <fancy-button bgcolor="lightgreen">Green fancy button</fancy-button>
-    <fancy-button :bgcolor="'yellow'">Yellow fancy button</fancy-button>
+  <fancy-button bgcolor="lightgreen">Green fancy button</fancy-button>
+  <fancy-button :bgcolor="'yellow'">Yellow fancy button</fancy-button>
 </div>
 ```
 `x-props` is optional, and you can also Vue's object syntax for defaults and type validation.
@@ -73,9 +74,11 @@ Re-usable Vue components:
 Use any other Vue options you like:
 ```html
 <div x-data="{name: ''}" x-opts="{
-    watch: {
-        name(newValue, oldValue) { console.log('Name was changed from', oldValue, 'to', newValue) }
+  watch: {
+    name(newValue, oldValue) { 
+      console.log('Name was changed from', oldValue, 'to', newValue) 
     }
+  }
 }">
 </div>
 ```
@@ -84,9 +87,9 @@ Use any other Vue options you like:
 Experimental feature that lets you introduce a new variable into scope, so you don't have to type the whole computation (nor recompute it) every time you need it.
 ```html
 <div x-for="custId in customerIds">
-    <template x-let:customer="getCustomer(custId)">
-        <div>{{customer.firstName}} {{customer.lastName}}</div>
-    </template>
+  <template x-let:customer="getCustomer(custId)">
+    <div>{{customer.firstName}} {{customer.lastName}}</div>
+  </template>
 </div>
 ```
 You can have multiple `x-let`s on a single element.
